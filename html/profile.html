@@ -18,14 +18,14 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
     <div class="container">
-      <a href="index.html" class="navbar-brand">Admin Panel</a>
+      <a href="../html/Adminindex.html" class="navbar-brand">Admin Panel</a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse"><span
           class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav">
           <li class="nav-item px-2">
-            <a href="index.html" class="nav-link active">Dashboard</a>
+            <a href="../html/Adminindex.html" class="nav-link">Dashboard</a>
           </li>
           <li class="nav-item px-2">
             <a href="posts.html" class="nav-link">Posts</a>
@@ -67,7 +67,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1><i class="fas fa-cog"></i> Dashboard</h1>
+          <h1><i class="fas fa-user"></i> Edit Profile</h1>
         </div>
       </div>
     </div>
@@ -78,79 +78,57 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal">
-            <i class="fas fa-plus"></i> Add Post
+          <a href="index.html" class="btn btn-light btn-block">
+            <i class="fas fa-arrow-left"></i> Back To Dashboard
           </a>
         </div>
         <div class="col-md-3">
-          <a href="#" class="btn btn-success btn-block" data-toggle="modal" data-target="#addCategoryModal">
-            <i class="fas fa-plus"></i> Add Category
+          <a href="#" class="btn btn-success btn-block">
+            <i class="fas fa-lock"></i> Change Password
           </a>
         </div>
         <div class="col-md-3">
-          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
-            <i class="fas fa-plus"></i> Add User
+          <a href="#" class="btn btn-danger btn-block">
+            <i class="fas fa-trash"></i> Delete Account
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- POSTS -->
-  <section>
+  <!-- PROFILE -->
+  <section id="profile">
     <div class="container">
       <div class="row">
-        <div class="col-md-9" id="postParent">
-          <div class="card" id="postContainer">
+        <div class="col-md-9">
+          <div class="card">
             <div class="card-header">
-              <h4>Latest Posts</h4>
+              <h4>Edit Profile</h4>
             </div>
-            <table class="table table-striped" id="postTable">
-              <thead class="table-dark">
-                <tr>
-                  <th>#</th>
-                  <th>Title</th>
-                  <th>Category</th>
-                  <th>Date</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="latestPosts">
-              </tbody>
-            </table>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" value="Chris Mabey">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" value="chris@email.com">
+                </div>
+                <div class="form-group">
+                  <label for="bio">Bio</label>
+                  <textarea
+                    name="editor1">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit libero illum voluptatibus similique laboriosam nesciunt, saepe optio sed amet facilis quis sit ab omnis error eligendi ad aspernatur officiis sequi nisi facere earum. Asperiores voluptas ut magni consectetur quibusdam quia!</textarea>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
         <div class="col-md-3">
-          <div class="card text-center bg-primary text-white mb-3">
-            <div class="card-body">
-              <h3>Posts</h3>
-              <!-- Added ID for JS -->
-              <h4 class="display-4" id="postCount">
-                <i class="fas fa-pencil-alt"></i>
-              </h4>
-              <a href="posts.html" class="btn btn-outline-light btn-sm">View</a>
-            </div>
-
-          </div>
-          <div class="card text-center bg-success text-white mb-3">
-            <div class="card-body">
-              <h3>Categories</h3>
-              <h4 class="display-4">
-                <i class="fas fa-folder"></i> 4
-              </h4>
-              <a href="categories.html" class="btn btn-outline-light btn-sm">View</a>
-            </div>
-          </div>
-          <div class="card text-center bg-warning text-white mb-3">
-            <div class="card-body">
-              <h3>Users</h3>
-              <h4 class="display-4">
-                <i class="fas fa-users"></i> 4
-              </h4>
-              <a href="users.html" class="btn btn-outline-light btn-sm">View</a>
-            </div>
-
-          </div>
+          <h3>Your Avatar</h3>
+          <img src="../img/avatar.png" alt="avatar" class="d-block img-fluid mb-3">
+          <button class="btn btn-primary btn-block">Edit Image</button>
+          <button class="btn btn-danger btn-block">Delete Image</button>
         </div>
       </div>
     </div>
@@ -183,15 +161,14 @@
           </button>
         </div>
         <div class="modal-body">
-          <form id="postForm">
+          <form>
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" class="form-control" id="postTitle">
+              <input type="text" class="form-control">
             </div>
             <div class="form-group">
               <label for="category">Category</label>
-              <select class="form-control" id="postCategory">
-                <option selected="selected">Choose One...</option>
+              <select class="form-control">
                 <option>Web Development</option>
                 <option>Tech Gadgets</option>
                 <option>Business</option>
@@ -207,14 +184,13 @@
               </div>
               <div class="form-group">
                 <label for="body">Body</label>
-                <textarea name="editor1" class="form-control" id="postBody"></textarea>
+                <textarea name="editor1" class="form-control"></textarea>
               </div>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <!-- Added id for JS -->
-          <button class="btn btn-primary" data-dismiss="modal" id="addPostBtn">Add Post</button>
+          <button class="btn btn-primary" data-dismiss="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -301,9 +277,8 @@
     $('#year').text(new Date().getFullYear());
     // Modal Editor
     CKEDITOR.replace('editor1');
+
   </script>
-  <!-- Local JS -->
-  <script src="js/app.js"></script>
 </body>
 
 </html>
