@@ -1,4 +1,6 @@
 /* Poppins */
+@charset "UTF-8";
+
 @font-face {
   font-family: 'Poppins';
   font-style: normal;
@@ -115,7 +117,8 @@ background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+
 
 /* bootcatch shadow theme */
 
-@import url(https://fonts.googleapis.com/css?family=Poppins);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+/* @charset "UTF-8"; */
 
 /*!
  * Bootcatch v4.3.1
@@ -308,7 +311,7 @@ blockquote {
   margin: 0 0 1rem;
 }
 
-<!-- navbar start -->
+/* <!-- navbar start --> */
 
 
 
@@ -10480,7 +10483,7 @@ button.bg-dark:focus {
 }
 
 .text-monospace {
-  font-family: "Poppins", sans-serif !important !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
 .text-justify {
