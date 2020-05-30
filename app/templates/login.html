@@ -52,16 +52,38 @@
               <h4>Account Login</h4>
             </div>
             <div class="card-body">
-              <form action="Adminindex.html">
+              <!-- LOGIN FORM -->
+              <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control">
+                  {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                  <ul>
+                      {% for message in messages %}
+                      <p>{{ message }}</p>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+                  {% endwith %}<br>
+                  <p>
+                  {{ form.email.label }}<br>
+                  {{ form.email(class_="form-control") }}
+                  {% for error in form.email.errors %}
+                  <span style="color: red;">{{ error }}</span>
+                  {% endfor %}
+                  </p>
                 </div>
                 <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control">
+                  <p>
+                  {{ form.password.label }}<br>
+                  {{ form.password(class_="form-control") }}
+                  {% for error in form.password.errors %}
+                  <span style="color: red;">{{ error }}</span>
+                  {% endfor %}
+                  </p>
                 </div>
-                <input type="submit" value="Login" class="btn btn-primary btn-block">
+                <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                <p>{{ form.submit(class_="btn btn-primary btn-block") }}</p>
               </form>
             </div>
           </div>
