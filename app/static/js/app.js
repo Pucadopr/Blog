@@ -38,7 +38,7 @@ class UI {
       <td>${post.title}</td>
       <td>${post.category}</td>
       <td>${Date(post.date)}</td>
-      <td><a href="details.html" class="btn btn-secondary">
+      <td><a href="{{ url_for('details') }}" class="btn btn-secondary">
       <i class="fas fa-angle-double-right"></i> Details
     </a></td>
     `;
