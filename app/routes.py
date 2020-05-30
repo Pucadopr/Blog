@@ -10,11 +10,11 @@ def login():
 @app.route('/')
 @app.route('/index')
 def index(): 
-    return render_template('Adminindex.html', title='Admin Panel', user=user)
+    return render_template('Adminindex.html', title='Admin Panel', user=user, admin='admin')
 
 @app.route('/categories')
 def categories():
-    return render_template('categories.html', title='Admin Panel', user=user)
+    return render_template('categories.html', title='Admin Panel', user=user, category='category')
 
 @app.route('/details')
 def details():
@@ -22,11 +22,11 @@ def details():
 
 @app.route('/posts')
 def posts():
-    return render_template('posts.html', title='Admin Panel', user=user)
+    return render_template('posts.html', title='Admin Panel', user=user, post='post')
 
 @app.route('/users')
 def users():
-    return render_template('users.html', title='Admin Panel', user=user)
+    return render_template('users.html', title='Admin Panel', user=user, users='users')
 
 @app.route('/profile')
 def profile():
