@@ -3,10 +3,13 @@ from app import app
 
 user = {'username': 'Pucado'}
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/')
 @app.route('/index')
-def index():
-    
+def index(): 
     return render_template('Adminindex.html', title='Admin Panel', user=user)
 
 @app.route('/categories')
