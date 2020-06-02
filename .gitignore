@@ -1,5 +1,5 @@
-# app.db
-# __pycache__/
-# .vscode/
-# venv/
-# config.py
+app.db
+__pycache__/
+.vscode/
+venv/
+config.py
