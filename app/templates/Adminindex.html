@@ -215,15 +215,18 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="" method="post" novalidate>
+            {{ categoryform.hidden_tag() }}
             <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" class="form-control">
+              <p>
+                {{ categoryform.title.label }}<br>
+                {{ categoryform.title(class_="form-control") }}
+              </p>
+            </div>
+            <div class="modal-footer">
+              <p>{{ categoryform.submit(class_="btn btn-success") }}</p>
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-success" data-dismiss="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -241,45 +244,45 @@
         </div>
         <div class="modal-body">
           <form action="" method="post" novalidate>
-            {{ form.hidden_tag() }}
+            {{ userform.hidden_tag() }}
             <div class="form-group">
                   <p>
-                    {{ form.name.label }}<br>
-                    {{ form.name(class_="form-control") }}
-                    {% for error in form.name.errors %}
+                    {{ userform.name.label }}<br>
+                    {{ userform.name(class_="form-control") }}
+                    {% for error in userform.name.errors %}
                     <span style="color: red;">{{ error }}</span>
                   {% endfor %}
                   </p>
             </div>
             <div class="form-group">
               <p>
-                {{ form.email.label }}<br>
-                {{ form.email(class_="form-control") }}
-                {% for error in form.email.errors %}
+                {{ userform.email.label }}<br>
+                {{ userform.email(class_="form-control") }}
+                {% for error in userform.email.errors %}
                 <span style="color: red;">{{ error }}</span>
                 {% endfor %}
               </p>           
             </div>
             <div class="form-group">
               <p>
-                {{ form.password.label }}<br>
-                {{ form.password(class_="form-control") }}
-                {% for error in form.password.errors %}
+                {{ userform.password.label }}<br>
+                {{ userform.password(class_="form-control") }}
+                {% for error in userform.password.errors %}
                 <span style="color: red;">{{ error }}</span>
                 {% endfor %}
               </p>
             </div>
             <div class="form-group">
               <p>
-                {{ form.password2.label }}<br>
-                {{ form.password2(class_="form-control") }}
-                {% for error in form.password2.errors %}
+                {{ userform.password2.label }}<br>
+                {{ userform.password2(class_="form-control") }}
+                {% for error in userform.password2.errors %}
                 <span style="color: red;">{{ error }}</span>
                 {% endfor %}
               </p>
             </div>
             <div class="modal-footer">
-                <p>{{ form.submit(class_="btn btn-warning") }}</p>
+                <p>{{ userform.submit(class_="btn btn-warning") }}</p>
             </div>
           </form>
         </div>
@@ -308,7 +311,7 @@
   </script>
   <!-- Local JS -->
   <!-- <script src="{{ url_for('static', filename='js/app.js')}}"></script> -->
-  {% if form.errors %}
+  {% if userform.errors %}
 
   <script>
   //  $('#AddNewModal').modal('show');

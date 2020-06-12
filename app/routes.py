@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from app.forms import LoginForm, AddUserForm
+from app.forms import LoginForm, AddUserForm, CategoryForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User
+from app.models import User, Category
 from werkzeug.urls import url_parse
 
 
@@ -27,16 +27,24 @@ def login():
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index(): 
-    form = AddUserForm()
-    if form.validate_on_submit():
-        user = User(name=form.name.data, email=form.email.data)
-        user.set_password(form.password.data)
+    userform = AddUserForm()
+    categoryform = CategoryForm()
+    if userform.validate_on_submit():
+        user = User(name=userform.name.data, email=userform.email.data)
+        user.set_password(userform.password.data)
         db.session.add(user)
         db.session.commit()
         flash('User registration successful')
         return redirect(url_for('index'))
-        
-    return render_template('Adminindex.html', title='Admin Panel', admin='admin', form=form)
+    
+    if categoryform.validate_on_submit():
+        cat = Category(title=categoryform.title.data)
+        db.session.add(cat)
+        db.session.commit()
+        flash('New Category added successful')
+        return redirect(url_for('index'))
+
+    return render_template('Adminindex.html', title='Admin Panel', admin='admin', userform=userform, categoryform= categoryform)
 
 @app.route('/categories')
 def categories():
