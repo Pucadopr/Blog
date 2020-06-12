@@ -27,7 +27,7 @@
           </a>
         </div>
         <div class="col-md-3">
-          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal">
+          <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#addUserModal" id= "usermodal">
             <i class="fas fa-plus"></i> Add User
           </a>
         </div>
@@ -240,27 +240,48 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
             <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" class="form-control">
+                  <p>
+                    {{ form.name.label }}<br>
+                    {{ form.name(class_="form-control") }}
+                    {% for error in form.name.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                  {% endfor %}
+                  </p>
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control">
+              <p>
+                {{ form.email.label }}<br>
+                {{ form.email(class_="form-control") }}
+                {% for error in form.email.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+              </p>           
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control">
+              <p>
+                {{ form.password.label }}<br>
+                {{ form.password(class_="form-control") }}
+                {% for error in form.password.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+              </p>
             </div>
             <div class="form-group">
-              <label for="password2">Confirm Password</label>
-              <input type="password" class="form-control">
+              <p>
+                {{ form.password2.label }}<br>
+                {{ form.password2(class_="form-control") }}
+                {% for error in form.password2.errors %}
+                <span style="color: red;">{{ error }}</span>
+                {% endfor %}
+              </p>
+            </div>
+            <div class="modal-footer">
+                <p>{{ form.submit(class_="btn btn-warning") }}</p>
             </div>
           </form>
-        </div>
-        <div class="modal-footer">
-          <button class="btn btn-warning" data-dismiss="modal">Save Changes</button>
         </div>
       </div>
     </div>
@@ -287,6 +308,25 @@
   </script>
   <!-- Local JS -->
   <!-- <script src="{{ url_for('static', filename='js/app.js')}}"></script> -->
+  {% if form.errors %}
 
+  <script>
+  //  $('#AddNewModal').modal('show');
+   $( "#usermodal" ).click()
+  </script>
+
+  {% endif %}
+
+
+  <script>
+    
+    // $('#addUserModal').on('shown.bs.modal', function() {
+    // $('form').bootstrapValidator('resetForm', true);
+    //  });
+    // $('#addUserModal').on('hidden.bs.modal', function () {
+    //   this.modal('show');
+    // });
+
+  </script>
 {% endblock %}
 

@@ -11,6 +11,8 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css"
     integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9" crossorigin="anonymous" />
+  <!-- Style sheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" />
   {% if title %}
   <title>{{ title }} - 25blog</title>
   {% else %}
@@ -81,6 +83,14 @@
       </div>
     </div>
   </nav>
+  <div class="container">
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+  </div>
 
   <!-- HEADER -->
   {% block content %}{% endblock %}

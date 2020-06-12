@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app
-from app.forms import LoginForm
+from app import app, db
+from app.forms import LoginForm, AddUserForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
 from werkzeug.urls import url_parse
@@ -24,10 +24,17 @@ def login():
     return render_template('login.html', form=form)
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index(): 
-    return render_template('Adminindex.html', title='Admin Panel', admin='admin')
+    form = AddUserForm()
+    if form.validate_on_submit():
+        user = User(name=form.name.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('User registration successful')
+    return render_template('Adminindex.html', title='Admin Panel', admin='admin', form=form)
 
 @app.route('/categories')
 def categories():
@@ -57,7 +64,3 @@ def settings():
 def logout():
     logout_user()
     return redirect(url_for('login'))
-
-# @app.route('/index')
-# def index():
-#     return render_template('index.html', title= 'Home')
