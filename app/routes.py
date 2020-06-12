@@ -34,6 +34,8 @@ def index():
         db.session.add(user)
         db.session.commit()
         flash('User registration successful')
+        return redirect(url_for('index'))
+        
     return render_template('Adminindex.html', title='Admin Panel', admin='admin', form=form)
 
 @app.route('/categories')

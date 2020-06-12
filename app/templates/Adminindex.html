@@ -316,17 +316,15 @@
   </script>
 
   {% endif %}
-
-
   <script>
-    
-    // $('#addUserModal').on('shown.bs.modal', function() {
-    // $('form').bootstrapValidator('resetForm', true);
-    //  });
-    // $('#addUserModal').on('hidden.bs.modal', function () {
-    //   this.modal('show');
-    // });
+    $(document).ready(function() {
+      // show the alert
+      setTimeout(function() {
+          $(".alert").alert('close');
+      }, 2000);
+    });
 
   </script>
+
 {% endblock %}
 
