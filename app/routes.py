@@ -44,7 +44,10 @@ def index():
         flash('New Category added successful')
         return redirect(url_for('index'))
 
-    return render_template('Adminindex.html', title='Admin Panel', admin='admin', userform=userform, categoryform= categoryform)
+    totalusers= db.session.query(User).count()
+    totalcategory= db.session.query(Category).count()
+
+    return render_template('Adminindex.html', title='Admin Panel', admin='admin', userform=userform, categoryform= categoryform, totalusers=totalusers, totalcategory= totalcategory)
 
 @app.route('/categories')
 def categories():
