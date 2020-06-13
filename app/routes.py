@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app, db
 from app.forms import LoginForm, AddUserForm, CategoryForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Category
+from app.models import User, Category, Post
 from werkzeug.urls import url_parse
 
 
@@ -46,8 +46,9 @@ def index():
 
     totalusers= db.session.query(User).count()
     totalcategory= db.session.query(Category).count()
+    totalposts= db.session.query(Post).count()
 
-    return render_template('Adminindex.html', title='Admin Panel', admin='admin', userform=userform, categoryform= categoryform, totalusers=totalusers, totalcategory= totalcategory)
+    return render_template('Adminindex.html', title='Admin Panel', admin='admin', userform=userform, categoryform= categoryform, totalusers=totalusers, totalcategory= totalcategory, totalposts= totalposts)
 
 @app.route('/categories')
 def categories():
