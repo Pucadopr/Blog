@@ -23,7 +23,6 @@ def login():
         return redirect(next_page)
     return render_template('login.html', form=form)
 
-@app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index(): 
@@ -73,6 +72,10 @@ def profile():
 @app.route('/settings')
 def settings():
     return render_template('settings.html',title='Admin Panel')
+
+@app.route('/')
+def home_page():
+    return render_template('single.html')
 
 @app.route('/logout')
 def logout():
